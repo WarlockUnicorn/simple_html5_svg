@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>SVG Testing</h1>
+        <p>Non-existant documentation stuff...</p>
+
+        <svg viewBox="0 0 20 10">
+            <!--
+            The circle will always intercept the mouse event.
+            To change the color of the rect underneath you have
+            to click outside the circle
+            -->
+            <rect x="0" y="0" height="10" width="10" fill="black" />
+            <circle cx="5" cy="5" r="4" fill="white"
+                     />
+          
+            <!--
+            The circle below will never catch a mouse event.
+            The rect underneath will change color whether you
+            are clicking on the circle or the rect itself
+            -->
+            <rect x="10" y="0" height="10" width="10" fill="black" />
+            <circle cx="15" cy="5" r="4" fill="white" pointer-events="none"/>
+          </svg>
+
+          <svg viewBox="0 0 200 100">
+            <!-- Example of a polyline with the default fill -->
+            <polyline points="0,100 50,25 50,75 100,0" />
+          
+            <!-- Example of the same polyline shape with stroke and no fill -->
+            <polyline points="100,100 150,25 150,75 200,0"
+                      fill="none" stroke="black" />
+          </svg>
+
+
+          <script>
+              window.addEventListener('mouseup', (e) => {
+                // Let's pick a random color between #000000 and #FFFFFF
+                const color = Math.round(Math.random() * 0xFFFFFF)
+
+                // Let's format the color to fit CSS requirements
+                const fill = '#' + color.toString(16).padStart(6,'0')
+
+                // Let's apply our color in the
+                // element we actually clicked on
+                e.target.style.fill = fill
+                })
+          </script>
+    </body>
+</html>
